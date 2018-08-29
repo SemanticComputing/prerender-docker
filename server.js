@@ -5,7 +5,7 @@ var server = prerender({
     chromeLocation: '/usr/bin/google-chrome',
     chromeFlags: ['--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars', '--no-sandbox'],
     followRedirects: true,
-    pageLoadTimeout: 2000
+    pageLoadTimeout: 1200
 });
 
 server.use(prerender.sendPrerenderHeader());
