@@ -17,4 +17,10 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 
 COPY server.js /application/
 
+# prevent zombie processes (see https://github.com/prerender/prerender/issues/484)
+ENV TINI_VERSION v0.18.0
+RUN wget -O /tini https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
+
 CMD ["node", "server.js"]
